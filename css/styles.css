@@ -1,0 +1,195 @@
+/* ===============================================================
+   AGGIUNTE A css/styles.css
+   Stili per navbar migliorata, cards interattive e animazioni
+   =============================================================== */
+
+/* Gradient per hero */
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Hover effect per card */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+}
+
+/* Fix per colonne 5 items per riga */
+@media (min-width: 768px) {
+    .col-md-2-4 {
+        flex: 0 0 auto;
+        width: 20%;
+    }
+}
+
+@media (min-width: 992px) {
+    .col-lg-2-4 {
+        flex: 0 0 auto;
+        width: 20%;
+    }
+}
+
+/* Navbar sticky migliorata */
+.navbar.sticky-top {
+    backdrop-filter: blur(10px);
+    background-color: rgba(33, 37, 41, 0.95) !important;
+}
+
+/* Progress indicator nella navbar */
+.navbar .progress {
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 10px;
+}
+
+/* Dropdown menu animato */
+.dropdown-menu {
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Breadcrumb personalizzato */
+.breadcrumb {
+    background-color: transparent;
+    padding: 0;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: "›";
+    font-size: 1.2rem;
+}
+
+
+.timeline-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.timeline {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #dee2e6;
+  z-index: 1;
+}
+
+.timeline-item {
+  position: relative;
+  z-index: 2;
+  flex: 1 1 18%;
+  text-align: center;
+}
+
+.timeline-content {
+  background-color: #f8f9fa;
+  padding: 15px 10px;
+  border-radius: 10px;
+  margin: 0 5px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.timeline-content:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-item.active .timeline-content {
+  background-color: #0d6efd;
+  color: #fff;
+  font-weight: bold;
+}
+
+.timeline-item.active .timeline-content h5,
+.timeline-item.active .timeline-content p {
+  color: #fff;
+}
+
+.timeline h5 {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.timeline p {
+  margin: 0;
+  font-weight: 500;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .timeline-wrapper {
+    gap: 30px;
+  }
+
+  .timeline {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .timeline::before {
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    right: auto;
+    width: 2px;
+    height: 100%;
+  }
+
+  .timeline-item {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  .timeline-content {
+    margin-left: 50px;
+  }
+}
+/* ===============================================================
+   STILI SPECIFICI PER GIORNO 1
+   =============================================================== */
+
+/* Codice SQL evidenziato */
+pre code {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Alert personalizzati */
+.alert-info, .alert-success, .alert-warning, .alert-danger {
+    border-left: 4px solid;
+}
+
+/* Tabelle responsive migliorate */
+.table-bordered thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
