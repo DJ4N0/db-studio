@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Database Trainer - Percorso di Apprendimento</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Stili specifici per il database trainer */
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #dee2e6;
+            z-index: 1;
+        }
+
+        .timeline-item {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            text-align: center;
+        }
+
+        .timeline-content {
+            padding: 10px;
+            border-radius: 8px;
+            margin: 0 5px;
+        }
+
+        .timeline-item.active .timeline-content {
+            box-shadow: 0 0 0 2px #0d6efd;
+        }
+
+        .sql-code {
+            background-color: #1e1e1e;
+            color: #f8f8f2;
+            font-family: "Consolas", monospace;
+            border-radius: 8px;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+
+        .entity-relationship {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .database-concept {
+            border-left: 4px solid #0d6efd;
+            padding-left: 15px;
+            margin: 15px 0;
+        }
+
+        @media (max-width: 768px) {
+            .timeline {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .timeline::before {
+                top: 0;
+                bottom: 0;
+                left: 20px;
+                right: auto;
+                width: 2px;
+                height: 100%;
+            }
+            
+            .timeline-item {
+                margin-bottom: 20px;
+                text-align: left;
+                width: 100%;
+            }
+            
+            .timeline-content {
+                margin-left: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-database me-2"></i>Database Trainer
+            </a>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <main>
+            <!-- Header -->
+            <header class="text-center mb-5 p-4 bg-primary text-white rounded">
+                <h1 class="fw-bold display-4">🎯 Database Relazionali - Percorso Completo</h1>
+                <p class="lead mb-0">Dal modello relazionale a SQL avanzato in 10 giorni</p>
+                <div class="mt-3">
+                    <span class="badge bg-light text-primary me-2">Modello Relazionale</span>
+                    <span class="badge bg-light text-primary me-2">SQL</span>
+                    <span class="badge bg-light text-primary me-2">Normalizzazione</span>
+                </div>
+            </header>
+
+            <!-- Progress Bar -->
+            <div class="progress mb-4" style="height: 8px;">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <p class="text-muted text-center mb-4"><small>10% completato - Giorno 1</small></p>
+
+            <!-- Approccio Pratico -->
+            <section class="mb-5 p-4 bg-warning bg-opacity-10 border-start border-warning border-5 rounded">
+                <div class="d-flex align-items-center mb-3">
+                    <i class="fas fa-database fa-2x text-warning me-3"></i>
+                    <h2 class="fw-bold text-warning mb-0">🧠 Approccio Pratico ai Database</h2>
+                </div>
+                <p class="lead">
+                    Prima di immergerti nella teoria, <b>esegui tutti gli esercizi su un database reale</b>.
+                    L'obiettivo è comprendere come i concetti teorici si applicano a scenari reali.
+                </p>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="card h-100 border-warning">
+                            <div class="card-header bg-warning text-dark">
+                                <h5 class="mb-0"><i class="fas fa-check-circle me-2"></i>Cosa fare</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><i class="fas fa-server text-success me-2"></i>Installare un DBMS (MySQL, PostgreSQL)</li>
+                                    <li class="list-group-item"><i class="fas fa-table text-info me-2"></i>Creare tabelle con diversi vincoli</li>
+                                    <li class="list-group-item"><i class="fas fa-search text-primary me-2"></i>Eseguire query su dati reali</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 border-danger">
+                            <div class="card-header bg-danger text-white">
+                                <h5 class="mb-0"><i class="fas fa-times-circle me-2"></i>Cosa NON fare</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><i class="fas fa-book text-muted me-2"></i>Non limitarsi alla teoria</li>
+                                    <li class="list-group-item"><i class="fas fa-copy text-muted me-2"></i>Non copiare query senza comprenderle</li>
+                                    <li class="list-group-item"><i class="fas fa-bolt text-muted me-2"></i>Non saltare la normalizzazione</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Timeline del percorso -->
+            <section class="mb-5">
+                <h3 class="fw-bold text-center mb-4">📅 Percorso di Apprendimento - 10 Giorni</h3>
+                <div class="timeline">
+                    <div class="timeline-item active">
+                        <div class="timeline-content bg-primary text-white">
+                            <h5>Giorno 1</h5>
+                            <p>Modello Relazionale</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content bg-light">
+                            <h5>Giorno 2</h5>
+                            <p>Algebra Relazionale</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content bg-light">
+                            <h5>Giorno 3</h5>
+                            <p>SQL Fondamentale</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content bg-light">
+                            <h5>Giorno 4</h5>
+                            <p>SQL Avanzato</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content bg-light">
+                            <h5>Giorno 5</h5>
+                            <p>Normalizzazione</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline mt-2">
+                    <div class="timeline-item">
+                        <div class="timeline-content bg-light">
+                            <h5>Giorno 6</h5>
+                            <p>Modello E-R</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content bg-light">
+                            <h5>Giorno 7</h5>
+                            <p>Indicizzazione</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content bg-light">
+                            <h5>Giorno 8</h5>
+                            <p>Transazioni</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content bg-light">
+                            <h5>Giorno 9</h5>
+                            <p>Tecnologie Avanzate</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content bg-light">
+                            <h5>Giorno 10</h5>
+                            <p>Progetto Finale</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Concetti Fondamentali Giorno 1 -->
+            <section class="mb-5">
+                <h3 class="fw-bold text-primary mb-4">📘 Giorno 1 - Modello Relazionale</h3>
+                
+                <div class="database-concept">
+                    <h5><i class="fas fa-key text-primary me-2"></i>Chiavi nel Modello Relazionale</h5>
+                    <p>Le chiavi sono fondamentali per identificare univocamente le tuple in una relazione:</p>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-header bg-primary text-white">
+                                    <h6 class="mb-0">Superchiave</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p>Insieme di attributi che identifica univocamente le tuple</p>
+                                    <small>Esempio: (codice_fiscale, nome) per una relazione Persona</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-header bg-success text-white">
+                                    <h6 class="mb-0">Chiave Primaria</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p>Chiave candidata scelta per identificare le tuple</p>
+                                    <small>Esempio: codice_fiscale per una relazione Persona</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="database-concept">
+                    <h5><i class="fas fa-table text-info me-2"></i>Struttura di una Relazione</h5>
+                    <p>Una relazione è composta da:</p>
+                    <ul>
+                        <li><strong>Attributi</strong>: Colonne che definiscono le proprietà</li>
+                        <li><strong>Tuple</strong>: Righe che contengono i dati</li>
+                        <li><strong>Dominio</strong>: Insieme di valori che un attributo può assumere</li>
+                    </ul>
+                    
+                    <div class="sql-code mt-3">
+        CREATE TABLE Studente (
+            matricola INT PRIMARY KEY,
+            nome VARCHAR(50) NOT NULL,
+            cognome VARCHAR(50) NOT NULL,
+            data_nascita DATE
+        );
+                    </div>
+                </div>
+            </section>
+
+            <!-- Esercizio Interattivo -->
+            <section class="mb-5">
+                <h3 class="fw-bold text-primary mb-4">🎮 Esercizio - Identifica le Chiavi</h3>
+                
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Data la seguente relazione, identifica le possibili chiavi</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>ISBN</th>
+                                        <th>Titolo</th>
+                                        <th>Autore</th>
+                                        <th>AnnoPubblicazione</th>
+                                        <th>Editore</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>978-88-123-4567-0</td>
+                                        <td>Database Fundamentals</td>
+                                        <td>Mario Rossi</td>
+                                        <td>2020</td>
+                                        <td>Editore A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>978-88-123-4567-1</td>
+                                        <td>SQL Avanzato</td>
+                                        <td>Luigi Verdi</td>
+                                        <td>2021</td>
+                                        <td>Editore B</td>
+                                    </tr>
+                                    <tr>
+                                        <td>978-88-123-4567-2</td>
+                                        <td>Database Fundamentals</td>
+                                        <td>Maria Bianchi</td>
+                                        <td>2020</td>
+                                        <td>Editore A</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="mt-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="option1">
+                                <label class="form-check-label" for="option1">ISBN è una superchiave</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="option2">
+                                <label class="form-check-label" for="option2">Titolo è una chiave candidata</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="option3">
+                                <label class="form-check-label" for="option3">(Titolo, Autore) è una superchiave</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="option4">
+                                <label class="form-check-label" for="option4">AnnoPubblicazione è una chiave primaria</label>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary mt-3" onclick="checkAnswer()">Verifica Risposta</button>
+                        <div id="exerciseResult" class="mt-3" style="display: none;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Preparazione per il Giorno Successivo -->
+            <section class="mb-5 bg-light p-4 rounded">
+                <h3 class="fw-bold text-primary mb-4">📝 Preparazione per il Giorno 2</h3>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-tasks text-success me-2"></i>Compiti per oggi</h5>
+                        <ul>
+                            <li>Rivedere i concetti di chiavi e vincoli</li>
+                            <li>Creare almeno 3 tabelle con diversi tipi di chiavi</li>
+                            <li>Identificare le dipendenze funzionali in tabelle esistenti</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-arrow-right text-primary me-2"></i>Prossimi argomenti</h5>
+                        <ul>
+                            <li>Algebra relazionale e operatori</li>
+                            <li>Selezione, proiezione e join</li>
+                            <li>Conversione da algebra relazionale a SQL</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info mt-3">
+                    <i class="fas fa-lightbulb me-2"></i>
+                    <strong>Suggerimento:</strong> Prima di passare al giorno successivo, assicurati di comprendere 
+                    la differenza tra chiave primaria, candidata e superchiave.
+                </div>
+            </section>
+
+            <!-- Risorse Addizionali -->
+            <section class="mb-5">
+                <h3 class="fw-bold text-primary mb-4">📚 Risorse per Approfondire</h3>
+                
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-book fa-2x text-primary mb-3"></i>
+                                <h5 class="card-title">Documentazione</h5>
+                                <p class="card-text">Modello relazionale e teoria delle chiavi</p>
+                                <a href="#" class="btn btn-outline-primary btn-sm">Studia</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-code fa-2x text-success mb-3"></i>
+                                <h5 class="card-title">Esercizi Pratici</h5>
+                                <p class="card-text">Problemi su chiavi e vincoli</p>
+                                <a href="#" class="btn btn-outline-success btn-sm">Prattica</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-database fa-2x text-info mb-3"></i>
+                                <h5 class="card-title">Database Sandbox</h5>
+                                <p class="card-text">Ambiente per testare i concetti</p>
+                                <a href="#" class="btn btn-outline-info btn-sm">Accedi</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Database Trainer</h5>
+                    <p>Un percorso completo per padroneggiare i database relazionali</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>Giorno 1 di 10<br>Completato il 10% del percorso</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    function checkAnswer() {
+        const option1 = document.getElementById('option1');
+        const option2 = document.getElementById('option2');
+        const option3 = document.getElementById('option3');
+        const option4 = document.getElementById('option4');
+        const resultDiv = document.getElementById('exerciseResult');
+        
+        let correct = true;
+        let message = '';
+        
+        if (!option1.checked) {
+            correct = false;
+            message += '<p>❌ ISBN è una superchiave (identifica univocamente ogni libro)</p>';
+        } else {
+            message += '<p>✅ Corretto! ISBN è una superchiave</p>';
+        }
+        
+        if (option2.checked) {
+            correct = false;
+            message += '<p>❌ Titolo non è una chiave candidata (ci sono libri con lo stesso titolo)</p>';
+        } else {
+            message += '<p>✅ Corretto! Titolo non è una chiave candidata</p>';
+        }
+        
+        if (!option3.checked) {
+            correct = false;
+            message += '<p>❌ (Titolo, Autore) è una superchiave (identifica univocamente ogni libro)</p>';
+        } else {
+            message += '<p>✅ Corretto! (Titolo, Autore) è una superchiave</p>';
+        }
+        
+        if (option4.checked) {
+            correct = false;
+            message += '<p>❌ AnnoPubblicazione non è una chiave primaria (non identifica univocamente i libri)</p>';
+        } else {
+            message += '<p>✅ Corretto! AnnoPubblicazione non è una chiave primaria</p>';
+        }
+        
+        if (correct) {
+            resultDiv.innerHTML = '<div class="alert alert-success"><strong>Complimenti!</strong> Tutte le risposte sono corrette!</div>' + message;
+        } else {
+            resultDiv.innerHTML = '<div class="alert alert-warning"><strong>Alcune risposte sono errate.</strong> Controlla la spiegazione:</div>' + message;
+        }
+        
+        resultDiv.style.display = 'block';
+    }
+    </script>
+</body>
+</html>
